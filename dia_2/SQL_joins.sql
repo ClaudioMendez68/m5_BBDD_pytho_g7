@@ -13,12 +13,28 @@ VALUES
     (40, 2800, 3),
     (50, 3200, 3),
     (60, 400, 1);
--- INNER JOIN
+
+-- INNER JOIN en la BBDD 'claudio'
 SELECT clientes.cliente_id, clientes.nombre, productos.id, productos.monto
 FROM clientes
 INNER JOIN productos ON clientes.cliente_id = productos.cliente_id;
 
--- INNER JOIN --
+-- LEFT JOIN en la BBDD 'claudio'
+SELECT clientes.cliente_id, clientes.nombre, productos.id, productos.monto
+FROM clientes
+LEFT JOIN productos ON clientes.cliente_id = productos.cliente_id;
+
+-- RIGHT JOIN en la BBDD 'claudio'
+SELECT clientes.cliente_id, clientes.nombre, productos.id, productos.monto
+FROM clientes
+RIGHT JOIN productos ON clientes.cliente_id = productos.cliente_id;
+
+-- FULL OUTER JOIN en la BBDD 'claudio'
+SELECT clientes.cliente_id, clientes.nombre, productos.id, productos.monto
+FROM clientes
+FULL OUTER JOIN productos ON clientes.cliente_id = productos.cliente_id;
+
+-- INNER JOIN en la BBDD 'prueba3' --
 -- SELECT * FROM TABLEA A INNER JOIN TABLEB B ON A.KEY = B.KEY;
 -- TABLEA es la que posee la PK(Primary Key)
 -- TABLEB es la que posee la FK(Foreign Key)
@@ -30,13 +46,13 @@ VALUES (14, 'Producto 14', 25.74);
 INSERT INTO productos (id_producto, nombre, precio)
 VALUES (15, 'Producto 15', 50.74);
 
--- LEFT JOIN --
+-- LEFT JOIN en la BBDD 'prueba3' --
 -- SELECT * FROM TABLEA A LEFT JOIN TABLEB B ON A.KEY = B.KEY WHERE B.KEY IS NULL;
 -- TABLEA es la que posee la PK(Primary Key)
 -- TABLEB es la que posee la FK(Foreign Key)
 SELECT * FROM productos A LEFT JOIN pedidos_detalle B ON A.id_producto = B.id_producto WHERE B.id_producto IS NULL;
 
--- RIGHT JOIN --
+-- RIGHT JOIN en la BBDD 'prueba3' --
 -- SELECT * FROM TABLEA A RIGHT JOIN TABLEB B ON A.KEY = B.KEY WHERE A.KEY IS NULL;
 -- TABLEA es la que posee la PK(Primary Key)
 -- TABLEB es la que posee la FK(Foreign Key)
