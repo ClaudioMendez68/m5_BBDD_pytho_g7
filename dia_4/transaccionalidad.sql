@@ -1,7 +1,7 @@
 -- DQL: Lenguaje de Consulta de Datos: SELECT
 -- DML : Lenguaje de Maniipulación de Datos: INSERT, UPDATE, DELETE
--- DDL:
--- DCL:
+-- DDL: Data Definition Language: CREATE, ALTER, DROP
+-- DCL: Data Control Language: GRANT, REVOKE, DENY
 
 CREATE DATABASE comidas_tipicas;
 
