@@ -16,7 +16,15 @@ CREATE TABLE Destinos (
     pais VARCHAR(50)
 );
 -- Crear la tabla Tickets
-
+CREATE TABLE Tickets (
+    ticket_id SERIAL PRIMARY KEY,
+    destino_id INT REFERENCES DESTINOS (destino_id),
+    viajero_id INT REFERENCES Viajeros(viajero_id),
+    numero_boleto VARCHAR(50) NOT NULL UNIQUE,
+    fecha_emision DATE,
+    fecha_salida DATE,
+    fecha_retorno DATE
+);
 
 
 -- Inserts para la tabla Viajeros
@@ -72,5 +80,3 @@ INSERT INTO Tickets (viajero_id, destino_id, numero_boleto, fecha_emision, fecha
 (13, 3, 'T131313', '2024-01-16', '2025-05-02', '2025-05-20'),
 (14, 4, 'T141414', '2024-01-17', '2025-06-12', '2025-06-30'),
 (15, 5, 'T151515', '2024-01-18', '2025-07-20', '2025-08-05');
-
-
