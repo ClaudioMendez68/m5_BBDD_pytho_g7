@@ -23,8 +23,28 @@ UPDATE clientes SET email = '' WHERE email IS NULL;
 -- Paso 5: Corremos nuevamente el comando de alteración de la columna.
 ALTER TABLE clientes
 ALTER COLUMN email SET NOT NULL;
+
 -- En la tabla clientes del ejercicio anterior, crearemos un campo fecha.
 -- Para esto, modifica la tabla y asigna la restricción.
 ALTER TABLE clientes
 ADD COLUMN fecha DATE NOT NULL;
 -- ERROR:  la columna «fecha» de la relación «clientes» contiene valores null
+ALTER TABLE clientes
+ADD COLUMN fecha DATE DEFAULT '1111-11-11' NOT NULL;
+
+ALTER TABLE clientes
+DROP COLUMN fecha;
+ALTER TABLE clientes
+ADD COLUMN fecha DATE;
+ALTER TABLE clientes
+ALTER COLUMN fecha SET NOT NULL;
+-- ERROR:  la columna «fecha» de la relación «clientes» contiene valores null
+UPDATE clientes SET fecha = COALESCE(fecha, '1111-11-11');
+ALTER TABLE clientes
+ALTER COLUMN fecha SET NOT NULL;
+
+-- Ejercicio propuesto: "Datos nulos en tabla de productos"
+UPDATE productos SET sku = COALESCE(sku, 'Dato no ingresado');
+-- Por último, el cliente nos solicita que no quiere que sigan ingresando datos con el SKU en nulo.
+ALTER TABLE productos
+ALTER COLUMN sku SET NOT NULL;
